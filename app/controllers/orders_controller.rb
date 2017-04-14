@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
     if order.valid?
       empty_cart!
       redirect_to order, notice: 'Your Order has been placed.'
+
     else
       redirect_to cart_path, error: order.errors.full_messages.first
     end
@@ -52,7 +53,11 @@ class OrdersController < ApplicationController
         )
       end
     end
+
     order.save!
+    p "order: ", order
+    p "order.line_items", order.line_items
+    UserMailer.welcome_email(order).deliver_later
     order
   end
 

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>HELLO CONSUMER <%= @order.id %></h1>
+    <p>
+
+    <% @order.line_items.each do |item| %>
+          <%= render 'item', item: item %>
+        <% end %>
+
+    TOTAL AMOUNT OF PENNIES THAT WERE ONCE YOURS BUT ARE MINE NOW: <%= @order.total_cents %>
+    </p>
+  </body>
+</html>

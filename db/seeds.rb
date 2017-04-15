@@ -137,10 +137,17 @@ cat3.products.create!({
 User.destroy_all
 
 User.create!({
-  first_name: 'Test',
+  first_name: 'Test1',
   last_name: 'User',
-  email: 'test@email.com',
-  password_digest: 'test-password'
+  email: 'test1@email.com',
+  password_digest: 'test1-password'
+})
+
+User.create!({
+  first_name: 'Test2',
+  last_name: 'User',
+  email: 'test2@email.com',
+  password_digest: 'test2-password'
 })
 
 ## REVIEWS
@@ -152,6 +159,13 @@ Review.create!({
   user_id: 1,
   description: 'neat',
   rating: 5,
+})
+
+Review.create!({
+  product_id: 1,
+  user_id: 2,
+  description: 'not neat',
+  rating: 1,
 })
 
 puts "DONE!"

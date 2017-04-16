@@ -1,8 +1,9 @@
 class ReviewsController < ApplicationController
 
-  # has_many :reviews
+  before_filter :current_user
 
-  def create
+
+ def create
 
     @review = Review.new({
       product_id:params["product_id"],
@@ -18,6 +19,16 @@ class ReviewsController < ApplicationController
 
 
 
+
+
+
+
+  def destroy
+      @review = Review.find params[:id]
+      @review.destroy
+      redirect_to "/products/#{params[:product_id]}"
+
+  end
 
 
 end

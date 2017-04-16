@@ -1,5 +1,10 @@
-<div>By <%= review.user.first_name %></div>
+<div>my name <%= review.user.first_name %></div>
 <div><%= review.description %></div>
-<div>Rating: <%= review.rating %></div>
-<div>Created At: <%= review.created_at %></div>
+<div>I give it <%= review.rating %> points</div>
+<div><%= review.created_at.strftime("%F at %R") %></div>
+<% if (current_user && review.user.id == current_user.id) then %>
+  <div>
+      <%= link_to fa_icon('trash'), [@product, @review], class: 'btn btn-sm btn-danger', method: :destroy %>
+    </div>
+<% end %>
 <br>
